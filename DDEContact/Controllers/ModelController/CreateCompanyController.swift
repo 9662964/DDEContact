@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 extension UIViewController {
     
@@ -70,14 +71,37 @@ class CreateCompanycontroller: UIViewController {
     @objc private func handleSave() {
         print("Tying to save company")
         
-        dismiss(animated: true) {
-            guard let companyName = self.nameTextField.text else {return}
-              let company = Company(name: companyName, founded: Date())
-              
-            self.delegate?.didAddCompany(company: company)
+        
+        //initialization of our core data stack
+        let persistentContainer = NSPersistentContainer(name: "CoreData")
+        persistentContainer.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                fatalError("Loading of store failed: \(error.localizedDescription)")
+            }
+        }
+        
+        let context = persistentContainer.viewContext
+        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+        company.setValue(nameTextField.text, forKey: "name")
+
+        //perform the save
+        do {
+            try context.save()
+        }catch let saveError{
+            print("Failed to save company:",saveError)
+            
+        }
+        
+
+        
+//        dismiss(animated: true) {
+//            guard let companyName = self.nameTextField.text else {return}
+//              let company = Company(name: companyName, founded: Date())
+//
+//            self.delegate?.didAddCompany(company: company)
 //            self.companiesViewController?.addCompany(company: company)
 //            CompaniesViewController.shared.addCompany(company: company)
-        }
+//        }
         
         
   

@@ -16,6 +16,7 @@
 		843431D524C5EA36009ECA4F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431D424C5EA36009ECA4F /* UIColor.swift */; };
 		843431D824C5F430009ECA4F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431D724C5F430009ECA4F /* Company.swift */; };
 		843431DF24C609A4009ECA4F /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431DE24C609A4009ECA4F /* CreateCompanyController.swift */; };
+		843431E324C626ED009ECA4F /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		843431D424C5EA36009ECA4F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		843431D724C5F430009ECA4F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		843431DE24C609A4009ECA4F /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
+		843431E224C626ED009ECA4F /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				843431D624C5F423009ECA4F /* Models */,
 				843431D924C6090E009ECA4F /* Controllers */,
 				843431E024C60FE0009ECA4F /* Resources */,
+				843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */,
 			);
 			path = DDEContact;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				843431D824C5F430009ECA4F /* Company.swift in Sources */,
 				843431C224C5B561009ECA4F /* SceneDelegate.swift in Sources */,
 				843431DF24C609A4009ECA4F /* CreateCompanyController.swift in Sources */,
+				843431E324C626ED009ECA4F /* CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +402,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				843431E224C626ED009ECA4F /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 843431E224C626ED009ECA4F /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 843431B424C5B561009ECA4F /* Project object */;
 }

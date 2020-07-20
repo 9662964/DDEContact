@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import CoreData
+
+
 
 class CompaniesViewController: UITableViewController,CreateCompanyViewControllerDelegate {
-    var companies = [
+//    var companies = [
+//
+//        Company(name: "Apple", founded: Date()),
+//        Company(name: "Google", founded: Date()),
+//        Company(name: "Facebook", founded: Date())
+//
+//    ]
     
-        Company(name: "Apple", founded: Date()),
-        Company(name: "Google", founded: Date()),
-        Company(name: "Facebook", founded: Date())
-    
-    ]
+    //Creat empty array
+    var companies = [Company]()
     
     func didAddCompany(company: Company) {
 //        let tesla = Company(name: "Tesla", founded: Date())
@@ -51,6 +57,31 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
         
         //seperator color
         tableView.separatorColor = .white
+        
+        fetchCompaines()
+    }
+    
+    private func fetchCompaines() {
+        let persistentContainer = NSPersistentContainer(name: "CoreData")
+        persistentContainer.loadPersistentStores { (storeDescription, error) in
+            if let error = error {
+                fatalError("Loading of store failed: \(error.localizedDescription)")
+            }
+        }
+        
+        let context = persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+        
+        do {
+            let companies = try context.fetch(fetchRequest)
+            companies.forEach({ (company) in
+                print(company.name ?? "")
+            })
+        }catch let fetchError{
+            print("Failed to fetch comopanies", fetchError)
+        }
+
     }
     
 
