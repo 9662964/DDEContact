@@ -13,6 +13,7 @@
 		843431C724C5B561009ECA4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843431C524C5B561009ECA4F /* Main.storyboard */; };
 		843431C924C5B564009ECA4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843431C824C5B564009ECA4F /* Assets.xcassets */; };
 		843431CC24C5B564009ECA4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843431CA24C5B564009ECA4F /* LaunchScreen.storyboard */; };
+		843431D524C5EA36009ECA4F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431D424C5EA36009ECA4F /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		843431C824C5B564009ECA4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		843431CB24C5B564009ECA4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		843431CD24C5B564009ECA4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843431D424C5EA36009ECA4F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		843431BE24C5B561009ECA4F /* DDEContact */ = {
 			isa = PBXGroup;
 			children = (
+				843431D324C5EA20009ECA4F /* Helper + Extension */,
 				843431BF24C5B561009ECA4F /* AppDelegate.swift */,
 				843431C124C5B561009ECA4F /* SceneDelegate.swift */,
 				843431C324C5B561009ECA4F /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				843431CD24C5B564009ECA4F /* Info.plist */,
 			);
 			path = DDEContact;
+			sourceTree = "<group>";
+		};
+		843431D324C5EA20009ECA4F /* Helper + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				843431D424C5EA36009ECA4F /* UIColor.swift */,
+			);
+			path = "Helper + Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				843431C424C5B561009ECA4F /* ViewController.swift in Sources */,
+				843431D524C5EA36009ECA4F /* UIColor.swift in Sources */,
 				843431C024C5B561009ECA4F /* AppDelegate.swift in Sources */,
 				843431C224C5B561009ECA4F /* SceneDelegate.swift in Sources */,
 			);
