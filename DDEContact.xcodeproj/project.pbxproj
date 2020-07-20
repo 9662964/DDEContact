@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		843431C024C5B561009ECA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431BF24C5B561009ECA4F /* AppDelegate.swift */; };
 		843431C224C5B561009ECA4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C124C5B561009ECA4F /* SceneDelegate.swift */; };
-		843431C424C5B561009ECA4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C324C5B561009ECA4F /* ViewController.swift */; };
+		843431C424C5B561009ECA4F /* CompaniesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431C324C5B561009ECA4F /* CompaniesViewController.swift */; };
 		843431C724C5B561009ECA4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843431C524C5B561009ECA4F /* Main.storyboard */; };
 		843431C924C5B564009ECA4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843431C824C5B564009ECA4F /* Assets.xcassets */; };
 		843431CC24C5B564009ECA4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843431CA24C5B564009ECA4F /* LaunchScreen.storyboard */; };
 		843431D524C5EA36009ECA4F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431D424C5EA36009ECA4F /* UIColor.swift */; };
+		843431D824C5F430009ECA4F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431D724C5F430009ECA4F /* Company.swift */; };
+		843431DF24C609A4009ECA4F /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431DE24C609A4009ECA4F /* CreateCompanyController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		843431BC24C5B561009ECA4F /* DDEContact.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDEContact.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843431BF24C5B561009ECA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		843431C124C5B561009ECA4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		843431C324C5B561009ECA4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		843431C324C5B561009ECA4F /* CompaniesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesViewController.swift; sourceTree = "<group>"; };
 		843431C624C5B561009ECA4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		843431C824C5B564009ECA4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		843431CB24C5B564009ECA4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		843431CD24C5B564009ECA4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		843431D424C5EA36009ECA4F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		843431D724C5F430009ECA4F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
+		843431DE24C609A4009ECA4F /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +62,11 @@
 		843431BE24C5B561009ECA4F /* DDEContact */ = {
 			isa = PBXGroup;
 			children = (
+				843431D924C6090E009ECA4F /* Controllers */,
+				843431D624C5F423009ECA4F /* Models */,
 				843431D324C5EA20009ECA4F /* Helper + Extension */,
 				843431BF24C5B561009ECA4F /* AppDelegate.swift */,
 				843431C124C5B561009ECA4F /* SceneDelegate.swift */,
-				843431C324C5B561009ECA4F /* ViewController.swift */,
 				843431C524C5B561009ECA4F /* Main.storyboard */,
 				843431C824C5B564009ECA4F /* Assets.xcassets */,
 				843431CA24C5B564009ECA4F /* LaunchScreen.storyboard */,
@@ -76,6 +81,39 @@
 				843431D424C5EA36009ECA4F /* UIColor.swift */,
 			);
 			path = "Helper + Extension";
+			sourceTree = "<group>";
+		};
+		843431D624C5F423009ECA4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				843431D724C5F430009ECA4F /* Company.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		843431D924C6090E009ECA4F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				843431DD24C60995009ECA4F /* ViewController */,
+				843431DC24C6098E009ECA4F /* ModelController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		843431DC24C6098E009ECA4F /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				843431C324C5B561009ECA4F /* CompaniesViewController.swift */,
+				843431DE24C609A4009ECA4F /* CreateCompanyController.swift */,
+			);
+			path = ModelController;
+			sourceTree = "<group>";
+		};
+		843431DD24C60995009ECA4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,10 +187,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843431C424C5B561009ECA4F /* ViewController.swift in Sources */,
+				843431C424C5B561009ECA4F /* CompaniesViewController.swift in Sources */,
 				843431D524C5EA36009ECA4F /* UIColor.swift in Sources */,
 				843431C024C5B561009ECA4F /* AppDelegate.swift in Sources */,
+				843431D824C5F430009ECA4F /* Company.swift in Sources */,
 				843431C224C5B561009ECA4F /* SceneDelegate.swift in Sources */,
+				843431DF24C609A4009ECA4F /* CreateCompanyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

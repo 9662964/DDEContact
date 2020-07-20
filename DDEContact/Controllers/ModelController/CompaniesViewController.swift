@@ -8,10 +8,19 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class CompaniesViewController: UITableViewController {
+    
+    let companies = [
+    
+        Company(name: "Apple", founded: Date()),
+        Company(name: "Google", founded: Date()),
+        Company(name: "Facebook", founded: Date())
+    
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
         setupNavigationStyle()
         view.backgroundColor = .white
@@ -33,20 +42,15 @@ class ViewController: UITableViewController {
         tableView.separatorColor = .white
     }
     
-    func setupNavigationStyle() {
-        
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.backgroundColor = UIColor.lightRed
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.barTintColor = .red
-        
-        //fix bug for title in black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    }
+
     
     @objc func handleAddCompany() {
         print("Adding compnay")
+        
+        let  createCompanyController = CreateCompanycomtroller()
+//        createCompanyController.view.backgroundColor = .green
+        let navController = UINavigationController(rootViewController: createCompanyController)
+        present(navController, animated: true, completion: nil)
     }
 
     //header
@@ -64,7 +68,8 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
         
-        cell.textLabel?.text = "The Company Name"
+        let company = companies[indexPath.row]
+        cell.textLabel?.text = company.name
         cell.textLabel?.textColor = .white
         cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         cell.backgroundColor = UIColor.tealColor
@@ -72,7 +77,9 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8 //arbitrary
+//        return 8
+        return companies.count
+        
     }
     
 }

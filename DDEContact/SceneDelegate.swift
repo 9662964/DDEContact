@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate,UIApplicationDelegate {
         if let windowScene = scene as? UIWindowScene {
 
             let window = UIWindow(windowScene: windowScene)
-            let companiesVC = ViewController()
+            let companiesVC = CompaniesViewController()
 //            vc.view.backgroundColor = .blue
             let navigation = CustomNavigationController(rootViewController: companiesVC)
             window.rootViewController = navigation
