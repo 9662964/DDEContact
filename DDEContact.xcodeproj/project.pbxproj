@@ -62,9 +62,9 @@
 		843431BE24C5B561009ECA4F /* DDEContact */ = {
 			isa = PBXGroup;
 			children = (
-				843431D924C6090E009ECA4F /* Controllers */,
-				843431D624C5F423009ECA4F /* Models */,
 				843431D324C5EA20009ECA4F /* Helper + Extension */,
+				843431D624C5F423009ECA4F /* Models */,
+				843431D924C6090E009ECA4F /* Controllers */,
 				843431BF24C5B561009ECA4F /* AppDelegate.swift */,
 				843431C124C5B561009ECA4F /* SceneDelegate.swift */,
 				843431C524C5B561009ECA4F /* Main.storyboard */,

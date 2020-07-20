@@ -17,6 +17,8 @@ extension UIViewController {
         navigationController?.navigationBar.backgroundColor = UIColor.lightRed
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = .red
+        navigationController?.navigationBar.tintColor = .white
+        
         
         //fix bug for title in black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -32,10 +34,16 @@ class CreateCompanycomtroller: UIViewController {
         
         view.backgroundColor = UIColor.lightBlue
         setupNavigationStyle()
+        
+        navigationItem.title = "Create Company"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:#selector(handleCancel))
+        
     }
     
     
-
+    @objc func handleCancel() {
+        dismiss(animated: true, completion: nil)
+    }
     
     
     
