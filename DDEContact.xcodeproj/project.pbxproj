@@ -17,6 +17,7 @@
 		843431D824C5F430009ECA4F /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431D724C5F430009ECA4F /* Company.swift */; };
 		843431DF24C609A4009ECA4F /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431DE24C609A4009ECA4F /* CreateCompanyController.swift */; };
 		843431E324C626ED009ECA4F /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */; };
+		843431E524C62FF5009ECA4F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431E424C62FF5009ECA4F /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		843431D724C5F430009ECA4F /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		843431DE24C609A4009ECA4F /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 		843431E224C626ED009ECA4F /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		843431E424C62FF5009ECA4F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				843431D924C6090E009ECA4F /* Controllers */,
 				843431E024C60FE0009ECA4F /* Resources */,
 				843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */,
+				843431E424C62FF5009ECA4F /* CoreDataManager.swift */,
 			);
 			path = DDEContact;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				843431D824C5F430009ECA4F /* Company.swift in Sources */,
 				843431C224C5B561009ECA4F /* SceneDelegate.swift in Sources */,
 				843431DF24C609A4009ECA4F /* CreateCompanyController.swift in Sources */,
+				843431E524C62FF5009ECA4F /* CoreDataManager.swift in Sources */,
 				843431E324C626ED009ECA4F /* CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

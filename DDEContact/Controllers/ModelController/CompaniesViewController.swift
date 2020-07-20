@@ -62,15 +62,17 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
     }
     
     private func fetchCompaines() {
-        let persistentContainer = NSPersistentContainer(name: "CoreData")
-        persistentContainer.loadPersistentStores { (storeDescription, error) in
-            if let error = error {
-                fatalError("Loading of store failed: \(error.localizedDescription)")
-            }
-        }
+//        let persistentContainer = NSPersistentContainer(name: "CoreData")
+//        persistentContainer.loadPersistentStores { (storeDescription, error) in
+//            if let error = error {
+//                fatalError("Loading of store failed: \(error.localizedDescription)")
+//            }
+//        }
+//
+//        let context = persistentContainer.viewContext
+   
         
-        let context = persistentContainer.viewContext
-        
+        let context = CoreDataManager.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
         
         do {
@@ -78,6 +80,9 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
             companies.forEach({ (company) in
                 print(company.name ?? "")
             })
+            
+            self.companies = companies
+            self.tableView.reloadData()
         }catch let fetchError{
             print("Failed to fetch comopanies", fetchError)
         }
