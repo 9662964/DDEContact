@@ -65,12 +65,7 @@
 				843431D324C5EA20009ECA4F /* Helper + Extension */,
 				843431D624C5F423009ECA4F /* Models */,
 				843431D924C6090E009ECA4F /* Controllers */,
-				843431BF24C5B561009ECA4F /* AppDelegate.swift */,
-				843431C124C5B561009ECA4F /* SceneDelegate.swift */,
-				843431C524C5B561009ECA4F /* Main.storyboard */,
-				843431C824C5B564009ECA4F /* Assets.xcassets */,
-				843431CA24C5B564009ECA4F /* LaunchScreen.storyboard */,
-				843431CD24C5B564009ECA4F /* Info.plist */,
+				843431E024C60FE0009ECA4F /* Resources */,
 			);
 			path = DDEContact;
 			sourceTree = "<group>";
@@ -114,6 +109,19 @@
 			children = (
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		843431E024C60FE0009ECA4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				843431BF24C5B561009ECA4F /* AppDelegate.swift */,
+				843431C124C5B561009ECA4F /* SceneDelegate.swift */,
+				843431C524C5B561009ECA4F /* Main.storyboard */,
+				843431C824C5B564009ECA4F /* Assets.xcassets */,
+				843431CA24C5B564009ECA4F /* LaunchScreen.storyboard */,
+				843431CD24C5B564009ECA4F /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,7 +346,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6S8PVK4V9;
-				INFOPLIST_FILE = DDEContact/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DDEContact/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -356,7 +364,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6S8PVK4V9;
-				INFOPLIST_FILE = DDEContact/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DDEContact/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -8,9 +8,8 @@
 
 import UIKit
 
-class CompaniesViewController: UITableViewController {
-    
-    let companies = [
+class CompaniesViewController: UITableViewController,CreateCompanyViewControllerDelegate {
+    var companies = [
     
         Company(name: "Apple", founded: Date()),
         Company(name: "Google", founded: Date()),
@@ -18,8 +17,20 @@ class CompaniesViewController: UITableViewController {
     
     ]
     
+    func didAddCompany(company: Company) {
+//        let tesla = Company(name: "Tesla", founded: Date())
+        
+        //1 - Modify your array
+        companies.append(company)
+        //2- Insert a new index path into tableView
+        let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //test button created for test purpose
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Test", style: .plain, target: self, action: #selector(addCompany))
         
         // Do any additional setup after loading the view.
         setupNavigationStyle()
@@ -47,9 +58,13 @@ class CompaniesViewController: UITableViewController {
     @objc func handleAddCompany() {
         print("Adding compnay")
         
-        let  createCompanyController = CreateCompanycomtroller()
+        let  createCompanyController = CreateCompanycontroller()
 //        createCompanyController.view.backgroundColor = .green
         let navController = UINavigationController(rootViewController: createCompanyController)
+        
+        createCompanyController.delegate = self
+        
+        
         present(navController, animated: true, completion: nil)
     }
 
