@@ -70,7 +70,6 @@
 				843431D624C5F423009ECA4F /* Models */,
 				843431D924C6090E009ECA4F /* Controllers */,
 				843431E024C60FE0009ECA4F /* Resources */,
-				843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */,
 				843431E424C62FF5009ECA4F /* CoreDataManager.swift */,
 			);
 			path = DDEContact;
@@ -120,6 +119,7 @@
 		843431E024C60FE0009ECA4F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				843431E124C626ED009ECA4F /* CoreData.xcdatamodeld */,
 				843431BF24C5B561009ECA4F /* AppDelegate.swift */,
 				843431C124C5B561009ECA4F /* SceneDelegate.swift */,
 				843431C524C5B561009ECA4F /* Main.storyboard */,

@@ -10,22 +10,12 @@ import UIKit
 import CoreData
 
 
-
 class CompaniesViewController: UITableViewController,CreateCompanyViewControllerDelegate {
-//    var companies = [
-//
-//        Company(name: "Apple", founded: Date()),
-//        Company(name: "Google", founded: Date()),
-//        Company(name: "Facebook", founded: Date())
-//
-//    ]
-    
+
     //Creat empty array
     var companies = [Company]()
     
     func didAddCompany(company: Company) {
-//        let tesla = Company(name: "Tesla", founded: Date())
-        
         //1 - Modify your array
         companies.append(company)
         //2- Insert a new index path into tableView
@@ -35,10 +25,6 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //test button created for test purpose
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Test", style: .plain, target: self, action: #selector(addCompany))
-        
-        // Do any additional setup after loading the view.
         setupNavigationStyle()
         view.backgroundColor = .white
         navigationItem.title = "Companies"
@@ -62,45 +48,26 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
     }
     
     private func fetchCompaines() {
-//        let persistentContainer = NSPersistentContainer(name: "CoreData")
-//        persistentContainer.loadPersistentStores { (storeDescription, error) in
-//            if let error = error {
-//                fatalError("Loading of store failed: \(error.localizedDescription)")
-//            }
-//        }
-//
-//        let context = persistentContainer.viewContext
-   
-        
         let context = CoreDataManager.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
-        
         do {
             let companies = try context.fetch(fetchRequest)
             companies.forEach({ (company) in
                 print(company.name ?? "")
             })
-            
             self.companies = companies
             self.tableView.reloadData()
         }catch let fetchError{
             print("Failed to fetch comopanies", fetchError)
         }
-
     }
-    
 
-    
     @objc func handleAddCompany() {
         print("Adding compnay")
-        
         let  createCompanyController = CreateCompanycontroller()
 //        createCompanyController.view.backgroundColor = .green
         let navController = UINavigationController(rootViewController: createCompanyController)
-        
         createCompanyController.delegate = self
-        
-        
         present(navController, animated: true, completion: nil)
     }
 
@@ -110,8 +77,6 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
         view.backgroundColor = .lightBlue
         return view
     }
-    
-    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
@@ -127,12 +92,44 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 8
-        return companies.count
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, nil) in
+            print("Edit")
+        }
+        edit.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
+            print("delete")
+            let company = self.companies[indexPath.row]
+            //remove the company from our tableview
+            self.companies.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            
+            //delete the company from core data
+            let context = CoreDataManager.shared.persistentContainer.viewContext
+            context.delete(company)
+            do {
+                try context.save()
+            }catch let saveErr{
+                print("Failed to delete company-- \(saveErr)")
+            }
+            
+            
+        }
+        delete.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        let configure = UISwipeActionsConfiguration(actions: [edit, delete])
+        configure.performsFirstActionWithFullSwipe = false
+        return configure
     }
+
     
+    
+    
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return companies.count
+    }
 }
 
 
