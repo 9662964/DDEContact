@@ -12,6 +12,8 @@ import CoreData
 
 class CompaniesViewController: UITableViewController,CreateCompanyViewControllerDelegate {
 
+    
+
     //Creat empty array
     var companies = [Company]()
     
@@ -45,6 +47,14 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
         tableView.separatorColor = .white
         
         fetchCompaines()
+    }
+    
+    func didEditCompany(company: Company) {
+        //update my tableview somehow
+        let row = companies.index(of: company)
+        let reloadIndexPath = IndexPath(row: row!, section: 0)
+        tableView.reloadRows(at: [reloadIndexPath], with: .middle    )
+        
     }
     
     private func fetchCompaines() {
@@ -92,11 +102,28 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
         return cell
     }
     
+    
+    func dideditCompany(company: Company) {
+        
+    }
+    
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, nil) in
-            print("Edit")
+                  
+            //Perform Edit
+            print("Editing company")
+            let editCompanyController = CreateCompanycontroller()
+            editCompanyController.delegate = self
+            editCompanyController.company = self.companies[indexPath.row]
+            let navController = CustomNavigationController(rootViewController: editCompanyController)
+            self.present(navController, animated: true, completion: nil)
+            
+            
         }
+        
+        
         edit.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        
         
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
             print("delete")
@@ -104,8 +131,6 @@ class CompaniesViewController: UITableViewController,CreateCompanyViewController
             //remove the company from our tableview
             self.companies.remove(at: indexPath.row)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
-            
             //delete the company from core data
             let context = CoreDataManager.shared.persistentContainer.viewContext
             context.delete(company)

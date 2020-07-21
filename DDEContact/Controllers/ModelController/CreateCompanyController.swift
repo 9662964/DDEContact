@@ -11,12 +11,18 @@ import CoreData
 
 protocol CreateCompanyViewControllerDelegate {
     func didAddCompany(company: Company)
+    func didEditCompany(company: Company)
 }
 
 class CreateCompanycontroller: UIViewController {
-
+    
+    var company: Company? {
+        didSet {
+            nameTextField.text = company?.name
+        }
+    }
     var delegate: CreateCompanyViewControllerDelegate?
-
+    
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Name"
@@ -26,7 +32,7 @@ class CreateCompanycontroller: UIViewController {
     }()
     
     let nameTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
         textField.placeholder = "Enter name"
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -43,29 +49,57 @@ class CreateCompanycontroller: UIViewController {
         navigationItem.title = "Create Company"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:#selector(handleCancel))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
-	    }
-
-
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        //ternary syntax : For edit function
+        navigationItem.title = company == nil ? "Create Company" : "Edit Company"
+    }
+    
+    
+    
     @objc private func handleSave() {
         print("Tying to save company")
+        
+        if company == nil {
+            createCompany()
+        }else{
+            saveCompanyChanges()
+        }
+    }
 
-        CoreDataManager.shared.persistentContainer.viewContext
-
+    private func saveCompanyChanges() {
         let context = CoreDataManager.shared.persistentContainer.viewContext
-        let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
-        company.setValue(nameTextField.text, forKey: "name")
-        //perform the save
+        company?.name = nameTextField.text
         do {
             try context.save()
-            //Success
-            dismiss(animated: true, completion: {
-                self.delegate?.didAddCompany(company: company as! Company)
+            //save succeded : Save and then dismiss
+            dismiss(animated: true, completion: {self.delegate?.didEditCompany(company: self.company!)
             })
-        }catch let saveError{
-            print("Failed to save company:",saveError)
+        }catch let saveErr{
+            print(saveErr)
         }
-     }
+
+    }
+    
+    
+    private func createCompany() {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+               let company = NSEntityDescription.insertNewObject(forEntityName: "Company", into: context)
+               company.setValue(nameTextField.text, forKey: "name")
+               //perform the save
+               do {
+                   try context.save()
+                   //Success
+                   dismiss(animated: true, completion: {
+                       self.delegate?.didAddCompany(company: company as! Company)
+                   })
+               }catch let saveError{
+                   print("Failed to save company:",saveError)
+               }
+        
+    }
     
     
     private func setupUI() {
@@ -81,7 +115,7 @@ class CreateCompanycontroller: UIViewController {
         view.addSubview(nameLabel)
         nameLabel.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         nameLabel.leftAnchor.constraint(equalTo: view.leftAnchor,constant: 16).isActive = true
-//        nameLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        //        nameLabel.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         nameLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 50).isActive = true
         //use following will cover till bottom
