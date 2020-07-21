@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
+    
 
     // MARK: UISceneSession Lifecycle
 
@@ -38,4 +39,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
+
+extension UINavigationController {
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
+    }
+}
+
 
